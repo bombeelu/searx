@@ -2,10 +2,10 @@
 .DEFAULT_GOAL=help
 
 # START Makefile setup
-export GIT_URL=https://github.com/asciimoo/searx
+export GIT_URL=https://github.com/bombeelu/bombeeX
 export GIT_BRANCH=master
-export SEARX_URL=https://searx.me
-export DOCS_URL=https://asciimoo.github.io/searx
+export SEARX_URL=https://bombee.land
+export DOCS_URL=https://bombeelu.github.io/bombeeX
 # END Makefile setup
 
 include utils/makefile.include
@@ -121,14 +121,14 @@ buildenv:
 	$(Q)echo "build searx/brand.py"
 	$(Q)echo "GIT_URL = '$(GIT_URL)'"  > searx/brand.py
 	$(Q)echo "GIT_BRANCH = '$(GIT_BRANCH)'"  >> searx/brand.py
-	$(Q)echo "ISSUE_URL = 'https://github.com/asciimoo/searx/issues'" >> searx/brand.py
+	$(Q)echo "ISSUE_URL = 'https://github.com/bombeelu/bombeeX/issues'" >> searx/brand.py
 	$(Q)echo "SEARX_URL = '$(SEARX_URL)'" >> searx/brand.py
 	$(Q)echo "DOCS_URL = '$(DOCS_URL)'" >> searx/brand.py
 	$(Q)echo "PUBLIC_INSTANCES = 'https://searx.space'" >> searx/brand.py
 	$(Q)echo "build utils/brand.env"
 	$(Q)echo "export GIT_URL='$(GIT_URL)'"  > utils/brand.env
 	$(Q)echo "export GIT_BRANCH='$(GIT_BRANCH)'"  >> utils/brand.env
-	$(Q)echo "export ISSUE_URL='https://github.com/asciimoo/searx/issues'" >> utils/brand.env
+	$(Q)echo "export ISSUE_URL='https://github.com/bombeelu/bombeeX/issues'" >> utils/brand.env
 	$(Q)echo "export SEARX_URL='$(SEARX_URL)'" >> utils/brand.env
 	$(Q)echo "export DOCS_URL='$(DOCS_URL)'" >> utils/brand.env
 	$(Q)echo "export PUBLIC_INSTANCES='https://searx.space'" >> utils/brand.env
@@ -244,7 +244,7 @@ test.sh:
 
 test.pep8: pyenvinstall
 	@echo "TEST      pep8"
-	$(Q)$(PY_ENV_ACT); pep8 --exclude='searx/static, searx/engines/gigablast.py' --max-line-length=120 --ignore "E402,W503" searx tests
+	$(Q)$(PY_ENV_ACT); pep8 --exclude='searx/static, searx/engines/gigablast.py, searx/searx-ve' --max-line-length=120 --ignore "E402,W503" searx tests
 
 test.unit: pyenvinstall
 	@echo "TEST      tests/unit"

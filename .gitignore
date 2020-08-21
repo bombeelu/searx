@@ -6,6 +6,7 @@ cache/
 engines.cfg
 env
 searx-ve
+bombeex-ve
 robot_log.html
 robot_output.xml
 robot_report.html
@@ -25,3 +26,4 @@ dist/
 local/
 gh-pages/
 searx.egg-info/
+bombeex.egg-info/

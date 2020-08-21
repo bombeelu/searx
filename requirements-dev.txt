@@ -17,3 +17,5 @@ sphinx-jinja
 sphinx-tabs
 sphinxcontrib-programoutput
 twine
+black
+jedi
