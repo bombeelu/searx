@@ -2,10 +2,10 @@
 .DEFAULT_GOAL=help
 
 # START Makefile setup
-export GIT_URL=https://github.com/asciimoo/searx
+export GIT_URL=https://github.com/bombeelu/bombeeX
 export GIT_BRANCH=master
-export SEARX_URL=https://searx.me
-export DOCS_URL=https://asciimoo.github.io/searx
+export SEARX_URL=https://bombee.land
+export DOCS_URL=https://bombeelu.github.io/bombeeX
 # END Makefile setup
 
 include utils/makefile.include
@@ -244,7 +244,7 @@ test.sh:
 
 test.pep8: pyenvinstall
 	@echo "TEST      pep8"
-	$(Q)$(PY_ENV_ACT); pep8 --exclude='searx/static, searx/engines/gigablast.py' --max-line-length=120 --ignore "E402,W503" searx tests
+	$(Q)$(PY_ENV_ACT); pep8 --exclude='searx/static, searx/engines/gigablast.py, searx/searx-ve' --max-line-length=120 --ignore "E402,W503" searx tests
 
 test.unit: pyenvinstall
 	@echo "TEST      tests/unit"
