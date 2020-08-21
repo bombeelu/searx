@@ -22,9 +22,9 @@ with open('requirements-dev.txt') as f:
     dev_requirements = [ l.strip() for l in f.readlines()]
 
 setup(
-    name='searx',
+    name='bombeeX',
     version=VERSION_STRING,
-    description="A privacy-respecting, hackable metasearch engine",
+    description="Fork of a privacy-respecting, hackable metasearch engine",
     long_description=long_description,
     url=brand.DOCS_URL,
     project_urls={
@@ -40,8 +40,8 @@ setup(
         'License :: OSI Approved :: GNU Affero General Public License v3'
     ],
     keywords='metasearch searchengine search web http',
-    author='Adam Tauber',
-    author_email='asciimoo@gmail.com',
+    author='Jimmy B',
+    author_email='adwu@pm.me',
     license='GNU Affero General Public License',
     packages=find_packages(exclude=["tests*"]),
     zip_safe=False,

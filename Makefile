@@ -121,14 +121,14 @@ buildenv:
 	$(Q)echo "build searx/brand.py"
 	$(Q)echo "GIT_URL = '$(GIT_URL)'"  > searx/brand.py
 	$(Q)echo "GIT_BRANCH = '$(GIT_BRANCH)'"  >> searx/brand.py
-	$(Q)echo "ISSUE_URL = 'https://github.com/asciimoo/searx/issues'" >> searx/brand.py
+	$(Q)echo "ISSUE_URL = 'https://github.com/bombeelu/bombeeX/issues'" >> searx/brand.py
 	$(Q)echo "SEARX_URL = '$(SEARX_URL)'" >> searx/brand.py
 	$(Q)echo "DOCS_URL = '$(DOCS_URL)'" >> searx/brand.py
 	$(Q)echo "PUBLIC_INSTANCES = 'https://searx.space'" >> searx/brand.py
 	$(Q)echo "build utils/brand.env"
 	$(Q)echo "export GIT_URL='$(GIT_URL)'"  > utils/brand.env
 	$(Q)echo "export GIT_BRANCH='$(GIT_BRANCH)'"  >> utils/brand.env
-	$(Q)echo "export ISSUE_URL='https://github.com/asciimoo/searx/issues'" >> utils/brand.env
+	$(Q)echo "export ISSUE_URL='https://github.com/bombeelu/bombeeX/issues'" >> utils/brand.env
 	$(Q)echo "export SEARX_URL='$(SEARX_URL)'" >> utils/brand.env
 	$(Q)echo "export DOCS_URL='$(DOCS_URL)'" >> utils/brand.env
 	$(Q)echo "export PUBLIC_INSTANCES='https://searx.space'" >> utils/brand.env
