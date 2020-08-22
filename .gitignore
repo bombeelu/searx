@@ -27,3 +27,5 @@ local/
 gh-pages/
 searx.egg-info/
 bombeex.egg-info/
+.vim/
+*.log
