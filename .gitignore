@@ -29,3 +29,5 @@ searx.egg-info/
 bombeex.egg-info/
 .vim/
 *.log
+.yarn
+.yarnrc.yml

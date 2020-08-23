@@ -10,15 +10,21 @@ module.exports = {
   },
   env: {
     browser: true,
-    node: true,
     es6: true,
     es2020: true,
     commonjs: true,
-    amd: true,
+    jest: true,
+    serviceworker: true,
+    node: true,
   },
   settings: {
     react: {
       version: "detect",
+    },
+    "import/resolver": {
+      node: {
+        paths: ["src"],
+      },
     },
   },
   plugins: ["@typescript-eslint", "jest", "react", "react-hooks", "import"],
@@ -36,8 +42,9 @@ module.exports = {
   ],
   rules: {
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/no-cycle": ["error", { ignoreExternal: true }],
-    "import/no-commonjs": ["warn"],
+    "import/no-commonjs": ["off"],
     "import/no-amd": ["warn"],
     "react/display-name": "off",
   },
