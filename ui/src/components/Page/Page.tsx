@@ -1,6 +1,6 @@
-import { AppBar, Grid, IconButton, makeStyles, Toolbar } from "@material-ui/core";
 import React from "react";
-import BrightnessIcon from "@material-ui/icons/Brightness4";
+import { AppBar, Grid, makeStyles, Toolbar } from "@material-ui/core";
+import { ThemeToggle } from "components";
 
 type Props = {
   children: React.ReactNode;
@@ -21,9 +21,7 @@ export const Page = ({ children }: Props) => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="end">
-            <BrightnessIcon />
-          </IconButton>
+          <ThemeToggle />
         </Toolbar>
       </AppBar>
       <Grid
