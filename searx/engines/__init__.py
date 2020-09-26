@@ -24,9 +24,9 @@ from babel.localedata import locale_identifiers
 from flask_babel import gettext
 from operator import itemgetter
 from json import loads
-from requests import get
 from searx import settings
 from searx import logger
+from searx.poolrequests import get
 from searx.utils import load_module, match_language, get_engine_from_settings
 
 
@@ -74,6 +74,9 @@ def load_engine(engine_data):
 
     try:
         engine = load_module(engine_module + '.py', engine_dir)
+    except (SyntaxError, KeyboardInterrupt, SystemExit, SystemError, ImportError, RuntimeError) as e:
+        logger.exception('Fatal exception in engine "{}"'.format(engine_module))
+        sys.exit(1)
     except:
         logger.exception('Cannot load engine "{}"'.format(engine_module))
         return None

@@ -213,10 +213,6 @@ gecko.driver:
 PHONY += test test.sh test.pylint test.pep8 test.unit test.coverage test.robot
 test: buildenv test.pylint test.pep8 test.unit gecko.driver test.robot
 
-ifeq ($(PY),2)
-test.pylint:
-	@echo "LINT      skip liniting py2"
-else
 # TODO: balance linting with pylint
 
 test.pylint: pyenvinstall
@@ -225,7 +221,6 @@ test.pylint: pyenvinstall
 		searx/testing.py \
 		searx/engines/gigablast.py \
 	)
-endif
 
 # ignored rules:
 #  E402 module level import not at top of file
@@ -244,7 +239,8 @@ test.sh:
 
 test.pep8: pyenvinstall
 	@echo "TEST      pep8"
-	$(Q)$(PY_ENV_ACT); pep8 --exclude='searx/static, searx/engines/gigablast.py, searx/searx-ve' --max-line-length=120 --ignore "E402,W503" searx tests
+	$(Q)$(PY_ENV_ACT); pep8 --exclude='searx/static, searx/languages.py, searx/engines/gigablast.py' \
+        --max-line-length=120 --ignore "E402,W503" searx tests
 
 test.unit: pyenvinstall
 	@echo "TEST      tests/unit"

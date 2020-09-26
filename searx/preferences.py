@@ -6,16 +6,11 @@
 
 from base64 import urlsafe_b64encode, urlsafe_b64decode
 from zlib import compress, decompress
-from sys import version
+from urllib.parse import parse_qs, urlencode
 
 from searx import settings, autocomplete
 from searx.languages import language_codes as languages
 from searx.utils import match_language
-from searx.url_utils import parse_qs, urlencode
-
-if version[0] == '3':
-    # pylint: disable=invalid-name
-    unicode = str
 
 
 COOKIE_MAX_AGE = 60 * 60 * 24 * 365 * 5  # 5 years
@@ -37,11 +32,11 @@ class ValidationException(Exception):
     """
 
 
-class Setting(object):
+class Setting:
     """Base class of user settings"""
 
     def __init__(self, default_value, **kwargs):
-        super(Setting, self).__init__()
+        super().__init__()
         self.value = default_value
         for key, value in kwargs.items():
             setattr(self, key, value)
@@ -275,7 +270,7 @@ class EnginesSetting(SwitchableSetting):
     """Engine settings"""
 
     def _post_init(self):
-        super(EnginesSetting, self)._post_init()
+        super()._post_init()
         transformed_choices = []
         for engine_name, engine in self.choices.items():  # pylint: disable=no-member,access-member-before-definition
             for category in engine.categories:
@@ -302,7 +297,7 @@ class PluginsSetting(SwitchableSetting):
     """Plugin settings"""
 
     def _post_init(self):
-        super(PluginsSetting, self)._post_init()
+        super()._post_init()
         transformed_choices = []
         for plugin in self.choices:  # pylint: disable=access-member-before-definition
             transformed_choice = dict()
@@ -315,11 +310,11 @@ class PluginsSetting(SwitchableSetting):
         return [item[len('plugin_'):] for item in items]
 
 
-class Preferences(object):
+class Preferences:
     """Validates and saves preferences to cookies"""
 
     def __init__(self, themes, categories, engines, plugins):
-        super(Preferences, self).__init__()
+        super().__init__()
 
         self.key_value_settings = {
             'categories': MultipleChoiceSetting(
@@ -364,7 +359,7 @@ class Preferences(object):
                 choices=themes
             ),
             'results_on_new_tab': MapSetting(
-                False,
+                settings['ui'].get('results_on_new_tab', False),
                 map={
                     '0': False,
                     '1': True,
@@ -402,14 +397,14 @@ class Preferences(object):
 
         settings_kv['tokens'] = ','.join(self.tokens.values)
 
-        return urlsafe_b64encode(compress(urlencode(settings_kv).encode('utf-8'))).decode('utf-8')
+        return urlsafe_b64encode(compress(urlencode(settings_kv).encode())).decode()
 
     def parse_encoded_data(self, input_data):
         """parse (base64) preferences from request (``flask.request.form['preferences']``)"""
-        decoded_data = decompress(urlsafe_b64decode(input_data.encode('utf-8')))
+        decoded_data = decompress(urlsafe_b64decode(input_data.encode()))
         dict_data = {}
         for x, y in parse_qs(decoded_data).items():
-            dict_data[x.decode('utf8')] = y[0].decode('utf8')
+            dict_data[x.decode()] = y[0].decode()
         self.parse_dict(dict_data)
 
     def parse_dict(self, input_data):
